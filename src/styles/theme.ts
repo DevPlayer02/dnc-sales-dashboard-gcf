@@ -15,7 +15,7 @@ export const lightTheme: Theme = {
     disabledColor: '#666',
     primary: '#0C70F2',
     primaryColor: '#FFF',
-    primaryHover: '#8061DE',
+    primaryHover: '#0061DE',
   },
   card: {
     alert: '#E80000',
@@ -55,7 +55,7 @@ export const darkTheme: Theme = {
     disabledColor: '#6D7B8E',
     primary: '#0C70F2',
     primaryColor: '#FFF',
-    primaryHover: '#8061DE',
+    primaryHover: '#0061DE',
   },
   card: {
     alert: '#E80000',
