@@ -26,7 +26,7 @@ function Resgistration() {
           >
             <Container maxWidth="sm">
               <Box sx={{ marginBottom: pxToRem(24) }}>
-                <Logo height={41} widht={100} />
+                <Logo height={41} width={100} />
               </Box>
               <Box sx={{ marginBottom: pxToRem(24) }}>
                 <StyledH1> Faça seu cadastro </StyledH1>
