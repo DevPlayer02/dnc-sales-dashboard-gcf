@@ -1,3 +1,6 @@
+import { ChangeEvent, useEffect } from 'react'
+
+// COMPONENTS
 import { Box, Container, Grid } from '@mui/material'
 import {
   BannerImage,
@@ -6,9 +9,56 @@ import {
   StyledH1,
   StyledP,
 } from '@/components'
+
+// HOOKS
+import { useFormValidation, usePost } from '@/hooks'
+
+// UTILS
 import { pxToRem } from '@/utils'
 
+// TYPES
+import { MessageProps, LoginData, loginPostData } from '@/types'
+
 function Login() {
+  const inputs = [
+    { type: 'email', placeholder: 'Email' },
+    { type: 'password', placeholder: 'Senha' },
+  ]
+  const { data, loading, error, postData } = usePost<LoginData, loginPostData>(
+    'login'
+  )
+  const { formValues, formValid, handleChange } = useFormValidation(inputs)
+
+  const handleMessage = (): MessageProps => {
+    if (!error) return { msg: '', type: 'success' }
+    switch (error) {
+      case 401:
+        return {
+          msg: 'Email e/ou senha inválidos',
+          type: 'error',
+        }
+      default:
+        return {
+          msg: 'Não foi possível realizar a operação. Entre em contato com nosso suporte',
+          type: 'error',
+        }
+    }
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    await postData({
+      email: String(formValues[0]),
+      password: String(formValues[1]),
+    })
+  }
+
+  useEffect(() => {
+    if (data?.jwt_token) {
+      console.log('DATA: ', data)
+    }
+  }, [data])
+
   return (
     <>
       <Box>
@@ -32,22 +82,23 @@ function Login() {
                 <StyledP> Digite sua senha e email para logar </StyledP>
               </Box>
               <FormComponent
-                inputs={[
-                  { type: 'email', placeholder: 'Email', disabled: true },
-                  { type: 'password', placeholder: 'Password' },
-                ]}
+                inputs={inputs.map((input, index) => ({
+                  type: input.type,
+                  placeholder: input.placeholder,
+                  value: formValues[index] || '',
+                  onChange: (e: ChangeEvent<HTMLInputElement>) =>
+                    handleChange(index, (e.target as HTMLInputElement).value),
+                }))}
                 buttons={[
                   {
                     className: 'primary',
+                    disabled: !formValid || loading,
                     type: 'submit',
-                    children: 'Login',
-                    disabled: true,
+                    onClick: handleSubmit,
+                    children: loading ? 'Aguarde...' : 'login',
                   },
                 ]}
-                message={{
-                  msg: 'Sucesso!!!',
-                  type: 'success',
-                }}
+                message={handleMessage()}
               />
             </Container>
           </Grid>
