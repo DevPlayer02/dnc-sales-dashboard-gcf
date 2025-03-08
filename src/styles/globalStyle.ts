@@ -1,3 +1,4 @@
+import { pxToRem } from '@/utils'
 import { createGlobalStyle } from 'styled-components'
 import { DefaultTheme } from 'styled-components'
 
@@ -11,8 +12,16 @@ export const GlobalStyle = createGlobalStyle<{ theme?: DefaultTheme }>`
     font-family: 'Inter', sans-serif;
   }
 
-  h1, h1, p, ul, li, figure {
+  h1, h2, p, ul, li, figure {
     margin: 0;
     padding: 0;
+  }
+
+  .mb-1 {
+    margin-bottom: ${pxToRem(16)};
+  }
+
+  .mb-2 {
+    margin-bottom: ${pxToRem(32)};
   }
 `
