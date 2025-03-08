@@ -1,4 +1,7 @@
 import { ChangeEvent, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { jwtDecode } from 'jwt-decode'
+import Cookies from 'js-cookie'
 
 // COMPONENTS
 import { Box, Container, Grid } from '@mui/material'
@@ -14,12 +17,13 @@ import {
 import { useFormValidation, usePost } from '@/hooks'
 
 // UTILS
-import { pxToRem } from '@/utils'
+import { jwtExpirationDateConverter, pxToRem } from '@/utils'
 
 // TYPES
-import { MessageProps, LoginData, loginPostData } from '@/types'
+import { DecodedJWT, MessageProps, LoginData, loginPostData } from '@/types'
 
 function Login() {
+  const navigate = useNavigate()
   const inputs = [
     { type: 'email', placeholder: 'Email' },
     { type: 'password', placeholder: 'Senha' },
@@ -55,9 +59,15 @@ function Login() {
 
   useEffect(() => {
     if (data?.jwt_token) {
-      console.log('DATA: ', data)
+      const decoded: DecodedJWT = jwtDecode(data?.jwt_token)
+      Cookies.set('Authorization', data?.jwt_token, {
+        expires: jwtExpirationDateConverter(decoded.exp),
+        secure: true,
+        sameSite: 'Lax',
+      })
     }
-  }, [data])
+    if (Cookies.get('Authorization')) navigate('/home')
+  }, [data, navigate])
 
   return (
     <>
