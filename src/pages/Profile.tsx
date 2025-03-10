@@ -25,7 +25,6 @@ import {
   ProfileEditableData,
   MessageProps,
 } from '@/types'
-import { clear } from 'node:console'
 
 function Profile() {
   const themeContext = useContext(AppThemeContext)
