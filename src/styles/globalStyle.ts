@@ -34,7 +34,7 @@ export const GlobalStyle = createGlobalStyle<{ theme?: DefaultTheme }>`
     animation: skeletonLoading 2s infinite alternate;
   }
 
-  @key-frames skeletonLoading {
+  @keyframes skeletonLoading {
     from {
       background-color: ${(props) => props.theme.appSkeletonFrom};
     }
@@ -44,10 +44,10 @@ export const GlobalStyle = createGlobalStyle<{ theme?: DefaultTheme }>`
   }
 
   .skeleton-loading-mh-1 {
-    min-height: ${pxToRem(175)}
+    min-height: ${pxToRem(175)};
   }
 
   .skeleton-loading-mh-2 {
-    min-height: ${pxToRem(400)}
+    min-height: ${pxToRem(400)};
   }
 `

@@ -1,6 +1,7 @@
 import { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { AppThemeContext } from '@/contexts/AppThemeContext'
 import Cookies from 'js-cookie'
+import { Container, Grid } from '@mui/material'
 
 // COMPONENTS
 import {
@@ -10,7 +11,6 @@ import {
   StyledH2,
   StyledButton,
 } from '@/components'
-import { Container, Grid } from '@mui/material'
 
 // HOOKS
 import { useFormValidation, useGet, usePut, useDelete } from '@/hooks'
@@ -34,6 +34,7 @@ function Profile() {
     type: 'success',
     msg: '',
   })
+
   const clearMessage = () => {
     setTimeout(() => {
       setUpdateMessage({
@@ -42,6 +43,7 @@ function Profile() {
       })
     }, 3000)
   }
+
   const {
     data: profileData,
     loading: profileLoading,

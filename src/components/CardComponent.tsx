@@ -28,4 +28,9 @@ export const CardComponent = styled.div`
     color: inherit;
     text-decoration: none;
   }
+
+  .link {
+    color: inherit;
+    text-decoration: none;
+  }
 `
