@@ -71,11 +71,7 @@ function Profile() {
   //FORM
   const inputs: InputProps[] = [
     { name: 'name', type: 'text', placeholder: 'Nome', required: true },
-    {
-      name: 'email',
-      type: 'email',
-      disabled: true,
-    },
+    { name: 'email', type: 'email', disabled: true },
     { name: 'phone', type: 'tel', placeholder: 'Telefone', required: true },
   ]
   const { formValues, formValid, handleChange } = useFormValidation(inputs)
