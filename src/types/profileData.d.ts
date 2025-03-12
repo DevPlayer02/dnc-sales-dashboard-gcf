@@ -12,5 +12,5 @@ export interface CreateProfileData {
   email: string
   phone: string
   password: string
-  message?: string |
+  message?: string
 }
