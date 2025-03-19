@@ -1,0 +1,9 @@
+echo 'Comit test init'
+
+# Prettier
+echo 'Running Prettier...'
+npm run format
+
+# Unit tests
+echo 'Running Unit tests...'
+npm run test
