@@ -11,6 +11,7 @@ import {
   Logo,
   StyledH1,
   StyledP,
+  StyledSpan,
 } from '@/components'
 
 // HOOKS
@@ -25,6 +26,7 @@ import { DecodedJWT, MessageProps, LoginData, loginPostData } from '@/types'
 // REDUX
 import { useSelector } from 'react-redux'
 import { RootState } from '@/redux'
+import { Link } from 'react-router-dom'
 
 function Login() {
   const navigate = useNavigate()
@@ -103,6 +105,10 @@ function Login() {
               <Box sx={{ marginBottom: pxToRem(24) }}>
                 <StyledH1> Bem-vindo </StyledH1>
                 <StyledP> Digite sua senha e email para logar </StyledP>
+                <StyledSpan>
+                  Não possue uma conta?
+                  <Link to="/registration">cadastre-se aqui</Link>
+                </StyledSpan>
               </Box>
               <FormComponent
                 inputs={inputs.map((input, index) => ({
