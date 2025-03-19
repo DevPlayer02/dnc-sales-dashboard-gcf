@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -41,8 +43,10 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/testing-library__react": "^10.2.0",
     "@vitejs/plugin-react": "^4.3.4",
+    "cypress": "^14.2.0",
     "eslint": "^9.21.0",
     "eslint-config-prettier": "^10.0.2",
+    "eslint-plugin-cypress": "^4.2.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react-hooks": "^5.1.0",
